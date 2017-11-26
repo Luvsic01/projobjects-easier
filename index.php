@@ -1,8 +1,11 @@
 <?php
 
 // Autoload PSR-4
-spl_autoload_register();
-
+spl_autoload_register(
+    function ($pathClassName) {
+        include str_replace('\\', '/', $pathClassName).'.php';
+    }
+);
 // Imports 
 use \Classes\Webforce3\Config\Config;
 

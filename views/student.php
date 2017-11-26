@@ -2,7 +2,9 @@
 	<!-- Default panel contents -->
 	<div class="panel-heading">Sélection</div>
 	<div class="panel-body">
-		<?php include 'alerts.php'; ?>
+        <div id="alertPhp">
+		    <?php include 'alerts.php'; ?>
+        </div>
 		<form action="" method="get">
 			<div class="row">
 				<div class="col-md-6 col-sm-6 col-xs-12">
@@ -22,7 +24,7 @@
 	<!-- Default panel contents -->
 	<div class="panel-heading"><strong>STUDENT</strong> <?php if ($studentObject->getId() > 0) : ?>Modification<?php else : ?>Ajout<?php endif ?></div>
 	<div class="panel-body">
-		<form action="" method="post">
+		<form id="addUpdateForm" action="" method="post">
 			<input type="hidden" name="id" value="<?= $studentObject->getId() ?>">
 			<div class="row">
 				<div class="col-md-6 col-sm-6 col-xs-12">
