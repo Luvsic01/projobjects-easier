@@ -29,44 +29,36 @@ $sessionNumber = isset($_POST['ses_number']) ? (int)$_POST['ses_number'] : 0;
 $locId = isset($_POST['loc_id']) ? (int)$_POST['loc_id'] : 0;
 $traId = isset($_POST['tra_id']) ? (int)$_POST['tra_id'] : 0;
 
-//todo to be continu...
-if (strlen($studentBirthdate) < 10) {
-    $conf->addError('Birthdate non correcte');
+
+if (!array_key_exists($sessionNumber, $sessionsList)) {
+    $conf->addError('Session non valide');
 }
-if (!array_key_exists($studentFriendliness, $friendlinessList)) {
-    $conf->addError('Sympathie non valide');
+if (!array_key_exists($locId, $locationsList)) {
+    $conf->addError('Location non valide');
 }
-if (!array_key_exists($cityId, $citiesList)) {
-    $conf->addError('Ville non valide');
+if (!array_key_exists($traId, $trainingsList)) {
+    $conf->addError('Trainning non valide');
 }
-if (!array_key_exists($sessionId, $sessionsList)) {
-    $conf->addError('Session de formation non valide');
+if (strlen($start) < 10) {
+    $conf->addError('Date de début non correcte');
 }
-if (empty($studentEmail) || filter_var($studentEmail, FILTER_VALIDATE_EMAIL) === false) {
-    $conf->addError('Email non valide');
-}
-if (empty($studentLastName)) {
-    $conf->addError('Veuillez renseigner le nom');
-}
-if (empty($studentFirstName)) {
-    $conf->addError('Veuillez renseigner le prénom');
+if (strlen($end) < 10) {
+    $conf->addError('Date de fin non correcte');
 }
 
 // je remplis l'objet qui est lu pour les inputs du formulaire, ou pour l'ajout en DB
-$studentObject = new Student(
-    $studentId,
-    new Session($sessionId),
-    new City($cityId),
-    $studentLastName,
-    $studentFirstName,
-    $studentEmail,
-    $studentBirthdate,
-    $studentFriendliness
+$sessionObject = new session(
+    $sessionId,
+    $sessionNumber,
+    $start,
+    $end,
+    new Location($locId),
+    new Training($traId)
 );
 
 // Si tout est ok
 if (!$conf->haveError()) {
-    if ($studentObject->saveDB()) {
+    if ($sessionObject->saveDB()) {
         //header('Location: student.php?success='.urlencode('Ajout/Modification effectuée').'&stu_id='.$studentObject->getId());
         echo json_encode(array(
             'code'=>1,
