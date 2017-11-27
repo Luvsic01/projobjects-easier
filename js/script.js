@@ -6,7 +6,7 @@ $(function () {
         var data = $(this).serialize();
         console.log(data);
         $.ajax({
-            url: "ajax/addUpdate.php",
+            url: "ajax/student.php",
             method: "POST",
             data: data,
             dataType: "json"
