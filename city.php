@@ -16,7 +16,7 @@ use \Classes\Webforce3\Helpers\SelectHelper;
 // Get the config object
 $conf = Config::getInstance();
 
-$cityId = isset($_GET['cit_id']) ? intval($_GET['cit_id']) : 0;
+$cityId = isset($_GET['cit_id']) ? (int)$_GET['cit_id'] : 0;
 $cityObject = new City();
 
 // Récupère la liste complète des city en DB
@@ -54,8 +54,8 @@ if(!empty($_POST)) {
     // je remplis l'objet qui est lu pour les inputs du formulaire, ou pour l'ajout en DB
 	$cityObject = new City(
 		$cityId,
-		new Country($countryId),
-		$cityName
+		$cityName,
+		new Country($countryId)
 	);
     
     // Si tout est ok => en DB
