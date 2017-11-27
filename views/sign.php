@@ -1,14 +1,16 @@
 <div class="panel panel-primary">
     <!-- Default panel contents -->
-    <div class="panel-heading">Accueil</div>
-    <div class="panel-body">
-        <div>
+    <div class="panel-heading" style="padding: 0;">
+        <ul class="nav nav-tabs nav-justified" role="tablist">
+            <li role="presentation" class="active"><a class="bg-success text-muted" href="#signin" aria-controls="signin" role="tab" data-toggle="tab">SignIn</a></li>
+            <li role="presentation"><a class="bg-primary text-muted" href="#signup" aria-controls="signup" role="tab" data-toggle="tab">SignUp</a></li>
+        </ul>
+    </div>
+    <div class="panel-body container">
+        <div class="col-xs-6 col-xs-offset-3">
 
             <!-- Nav tabs -->
-            <ul class="nav nav-tabs nav-justified" role="tablist">
-                <li role="presentation" class="active"><a class="bg-success text-muted" href="#signin" aria-controls="signin" role="tab" data-toggle="tab">SignIn</a></li>
-                <li role="presentation"><a class="bg-primary text-muted" href="#signup" aria-controls="signup" role="tab" data-toggle="tab">SignUp</a></li>
-            </ul>
+
 
             <!-- Tab panes -->
             <div class="tab-content" style="padding-top: 2rem;">
@@ -64,7 +66,6 @@
                     </form>
                 </div>
             </div>
-
         </div>
     </div>
 </div>
